@@ -10,7 +10,7 @@ public class SampleGrain : Grain, ISample
 
     public SampleGrain(ILogger<SampleGrain> logger)
     {
-        this._logger = logger;
+        _logger = logger;
     }
 
     public Task<string> Response(string message)

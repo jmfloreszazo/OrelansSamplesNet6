@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Orleans_CodeGenInputs Remove="ITestGrain.cs" />
+  </ItemGroup>
+
 </Project>

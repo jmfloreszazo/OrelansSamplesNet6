@@ -41,6 +41,8 @@ public class Program
                 options.ServiceId = "Test";
             })
             .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(SampleGrain).Assembly).WithReferences())
+            .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(SampleTestGrain).Assembly).WithReferences())
+            .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(CallingGrain).Assembly).WithReferences())
             .ConfigureLogging(logging => logging.AddConsole());
         var host = builder.Build();
         await host.StartAsync();

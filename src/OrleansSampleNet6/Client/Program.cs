@@ -55,8 +55,9 @@ public class Program
         {
             Console.WriteLine("Set Grain Id:");
             var grainId = Console.ReadLine();
-            var example = client.GetGrain<ISample>(grainId);
-            var response = await example.Response($" This is {grainId} at {DateTime.Now}");
+            var newGuid = new Guid();
+            var example = client.GetGrain<ICallingGrain>(newGuid);
+            var response = await example.Increment(1);
             Console.WriteLine($"\n\n {response} \n\n");
             Console.WriteLine("Continue? Y/N");
             var continueResponse = Console.ReadLine();
