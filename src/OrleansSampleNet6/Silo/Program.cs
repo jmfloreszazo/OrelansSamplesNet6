@@ -41,7 +41,8 @@ public class Program
                 options.ServiceId = "Test";
             })
             .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(SampleGrain).Assembly).WithReferences())
-            .ConfigureLogging(logging => logging.AddConsole());
+            .UseInMemoryReminderService();
+            //.UseAzureTableReminderService(options => options.ConnectionString = "YOUR_CONNECTION_STRING");
         var host = builder.Build();
         await host.StartAsync();
         return host;

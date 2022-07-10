@@ -53,6 +53,18 @@ public class Program
         var repeat = true;
         bool timerStarted = false;
         ITimerGrain? timer = null;
+        Console.WriteLine("Start Reminder Grain? Y/N"); 
+        if (Console.ReadLine()?.ToUpper() == "Y")
+        {
+            IReminderGrain reminderGrain = client.GetGrain < IReminderGrain > ("reminderAction");
+            await reminderGrain.SendMessage();
+        }
+        Console.WriteLine("Stop Reminder Grain? Y/N"); 
+        if (Console.ReadLine()?.ToUpper() == "Y")
+        {
+            IReminderGrain reminderGrain = client.GetGrain < IReminderGrain > ("reminderAction");
+            await reminderGrain.StopMessage();
+        }
         Console.WriteLine("Start timer Grain? Y/N");
         if (Console.ReadLine()?.ToUpper() == "Y")
         {
