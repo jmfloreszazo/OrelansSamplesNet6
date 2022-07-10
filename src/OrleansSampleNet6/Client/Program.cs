@@ -51,6 +51,15 @@ public class Program
     private static async Task DoClientWork(IClusterClient client)
     {
         var repeat = true;
+        bool timerStarted = false;
+        ITimerGrain? timer = null;
+        Console.WriteLine("Start timer Grain? Y/N");
+        if (Console.ReadLine()?.ToUpper() == "Y")
+        {
+            timer = client.GetGrain<ITimerGrain>(Guid.Empty);
+            timer.StartTimer();
+            timerStarted = true;
+        }
         do
         {
             Console.WriteLine("Set Grain Id:");
@@ -61,6 +70,15 @@ public class Program
             Console.WriteLine("Continue? Y/N");
             var continueResponse = Console.ReadLine();
             if (continueResponse?.ToUpper() == "N") repeat = false;
+            if (timerStarted)
+            {
+                Console.WriteLine("Continue Timer? Y/N");
+                if (Console.ReadLine()?.ToUpper() == "N")
+                {
+                    timer?.StopTimer(); 
+                    timerStarted = false;
+                }
+            }
         } while (repeat);
     }
 }
