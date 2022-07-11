@@ -6,17 +6,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+builder.Host.UseOrleans(siloBuilder =>
+{
+    //siloBuilder.UseLocalhostClustering().Configure<Orleans.Configuration.ClusterOptions>(options =>
+    //{
+    //    options.ClusterId = "dev";
+    //    options.ServiceId = "Test";
+    //});
 
-var siloBuilder = new SiloHostBuilder()
-    .UseLocalhostClustering().Configure<Orleans.Configuration.ClusterOptions>(options =>
-    {
-        options.ClusterId = "dev";
-        options.ServiceId = "Test";
-    })
-    .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(SampleGrain).Assembly).WithReferences())
-    .ConfigureLogging(logging => logging.AddConsole());
-var host = siloBuilder.Build();
-await host.StartAsync();
+    siloBuilder.UseKubernetesHosting();
+
+    siloBuilder.ConfigureApplicationParts(parts =>
+        parts.AddApplicationPart(typeof(SampleGrain).Assembly).WithReferences());
+    siloBuilder.ConfigureLogging(logging => logging.AddConsole());
+});
 
 var client = ConnectToOrleans().Result;
 builder.Services.AddSingleton<IClusterClient>(client);
