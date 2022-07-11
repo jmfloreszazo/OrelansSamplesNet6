@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grains", "Grains\Grains.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silo", "Silo\Silo.csproj", "{340BAECF-0E11-4C0C-9CF6-43F5856F5528}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{582E330B-989A-41F9-A6A4-7EB3589AFC3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{340BAECF-0E11-4C0C-9CF6-43F5856F5528}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{340BAECF-0E11-4C0C-9CF6-43F5856F5528}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{340BAECF-0E11-4C0C-9CF6-43F5856F5528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582E330B-989A-41F9-A6A4-7EB3589AFC3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582E330B-989A-41F9-A6A4-7EB3589AFC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582E330B-989A-41F9-A6A4-7EB3589AFC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582E330B-989A-41F9-A6A4-7EB3589AFC3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
